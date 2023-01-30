@@ -10,3 +10,6 @@ class Movie(models.Model):
     updated = models.DateField(auto_now=True)
     img = models.CharField(max_length=500)
     des = models.CharField(max_length=200)
+    
+    class Meta:
+        db_table = 'movie'
