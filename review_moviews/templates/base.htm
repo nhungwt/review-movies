@@ -33,12 +33,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Movies</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
-            </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="#">Link 3</a>
-            </li> -->
+            {% if not user.isauthenticate %}
+                <li class="nav-item">
+                    <a class="nav-link" href="log-in">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'regis' %}">Register</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log-out' %}">Logout({{ user.username.upper }} </a>
+                </li>
+            {% endif %}
         </ul>
     </nav>
 
