@@ -9,7 +9,7 @@
     <h2>Stacked form</h2>
 
     {% if error %}
-        <p>{{ error }}</p>
+        <p style="color: red;">*>{{ error }}</p>
     {% endif %}
     <form action="" method="post">
         {% csrf_token %}

@@ -42,6 +42,6 @@ def register(request):
                 login(request, user)
                 return render(request, 'listMovie.htm')
             except IntegrityError:
-                return render(request, 'register.htm', {'form': form, 'error': 'OUPS, username has been taken!'})
+                return render(request, 'register.htm', {'form': UserCreationForm(), 'error': 'OUPS, username has been taken!'})
         else:
-            return render(request, 'register.htm', {'form': form, 'error': 'Password dose not match!'})
+            return render(request, 'register.htm', {'form': UserCreationForm(), 'error': 'Password dose not match!'})
