@@ -1,2 +1,4 @@
 venv/*
 moviereviewsproject/*
+db.sqlite3
+
