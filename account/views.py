@@ -1,14 +1,25 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import IntegrityError
 
 # Create your views here.
 
 
 def loginCustom(request):
-    pass
+    if request.method == 'GET':
+        form = AuthenticationForm()
+        return render(request, 'login.htm', {'form': form})
+    elif request.method == 'POST':
+        user = authenticate(request, 
+                            username=request.POST['username'], 
+                            password=request.POST['password'])
+        if user is not None:
+            login(request, user)
+            return render(request, 'listMovie.htm')
+        else:
+            return render(request, 'login.htm', {'form': AuthenticationForm(), 'error': 'Information is incorrect!'})
 
 
 def logoutCutom(request):
