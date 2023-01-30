@@ -33,7 +33,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Movies</a>
             </li>
-            {% if not user.isauthenticate %}
+            {% if not user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'log-in' %}">Login</a>
                 </li>
@@ -42,7 +42,7 @@
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'log-out' %}">Logout({{ user.username.upper }} </a>
+                    <a class="nav-link" href="{% url 'log-out' %}">Logout({{ user.username.upper }})</a>
                 </li>
             {% endif %}
         </ul>

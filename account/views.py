@@ -37,7 +37,7 @@ def register(request):
         pass_confirm = request.POST['password2']
         if pass1 == pass_confirm:
             try:
-                user = User.objects.create_user(username, pass1)
+                user = User.objects.create_user(username,password=pass1) # password=: Cần có không thì nó lưu vào đâu ý chứ ko phải trường 'pass'
                 user.save()
                 login(request, user)
                 return render(request, 'listMovie.htm')
