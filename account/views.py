@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import IntegrityError
+from .forms import UserCreateForm
 
 # Create your views here.
 
@@ -29,7 +30,7 @@ def logoutCutom(request):
 
 def register(request):
     if request.method == 'GET':
-        form = UserCreationForm()
+        form = UserCreateForm()
         return render(request, 'register.htm', {'form': form})
     elif request.method == 'POST':
         username = request.POST['username']
@@ -42,6 +43,6 @@ def register(request):
                 login(request, user)
                 return render(request, 'listMovie.htm')
             except IntegrityError:
-                return render(request, 'register.htm', {'form': UserCreationForm(), 'error': 'OUPS, username has been taken!'})
+                return render(request, 'register.htm', {'form': UserCreateForm(), 'error': 'OUPS, username has been taken!'})
         else:
-            return render(request, 'register.htm', {'form': UserCreationForm(), 'error': 'Password dose not match!'})
+            return render(request, 'register.htm', {'form': UserCreateForm(), 'error': 'Password dose not match!'})
