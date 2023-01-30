@@ -6,5 +6,6 @@ def listMovie(request):
     movies = Movie.objects.all()
     return render(request, 'listMovie.htm', {'movies':movies})
 
-def movieDetail(request):
-    pass
+def movieDetail(request, pk):
+    movie = Movie.objects.get(pk=pk)
+    return render(request, 'movie_detail.htm', {'movie':movie})

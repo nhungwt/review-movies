@@ -1,0 +1,18 @@
+{% extends 'base.htm' %}
+
+{% block title %} {{movie.title}} {% endblock title %}
+
+{% block content %}
+<div class="full-container mx-5 mt-5">
+    <div class="row">
+        <div class="col-4">
+            <img class="card-img-top" src="{{ movie.img }}" />
+        </div>
+        <div class="col">
+            <h3 class="card-title fw-bold" style="color: blue;">{{ movie.title }}</h3>
+            <p class="card-text">Năm phát hành: {{ movie.publish }}</p>
+            <p class="card-text">{{ movie.des }}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

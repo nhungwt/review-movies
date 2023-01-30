@@ -9,22 +9,24 @@
     <div class="row row-cols-1 row-cols-md-3 g-4 mx-3">
         {% for movie in movies %}
         <div class="col">
-          <div class="card">
-            <img class="card-img-top" src="{{ movie.img }}" />
-            <div class="card-body">
-              <a href="{% url 'movie_detail' movie.id %}">
-                <h5 class="card-title fw-bold">{{ movie.title }}</h5>
-              </a>
-              <p class="card-text">{{ movie.des }}</p>
-              {% if movie.infor %}
-              <a href="{{ movie.infor }}" class="btn btn-primary">
-                Movie Link
-              </a>
-              {% endif %}
+            <div class="card">
+                <a href="{% url 'movie_detail' movie.id %}">
+                    <img class="card-img-top" src="{{ movie.img }}" />
+                </a>
+                <div class="card-body">
+                    <a href="{% url 'movie_detail' movie.id %}">
+                        <h5 class="card-title fw-bold">{{ movie.title }}</h5>
+                    </a>
+                    <p class="card-text">{{ movie.des }}</p>
+                    {% if movie.infor %}
+                    <a href="{{ movie.infor }}" class="btn btn-primary">
+                        Movie Link
+                    </a>
+                    {% endif %}
+                </div>
             </div>
-          </div>
         </div>
         {% endfor %}
-      </div>
+    </div>
 </div>
 {% endblock content %}
